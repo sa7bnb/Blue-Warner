@@ -108,6 +108,12 @@ B4:56:F3  00:21:7E  00:80:25  48:02:AF  9C:BA:C9
 
 Listan rymmer högst 64 prefix och ändras via konfigurationssidan, skärmens OUI-flik eller filen `/oui.txt` på SD-kortet.
 
+### Hjälp till att förbättra listan
+
+Om ni identifierar MAC-adresser från verkliga fordon, dela gärna med er av dem så att jag kan uppdatera programvaran med de adresserna. Öppna ett ärende under [Issues](https://github.com/sa7bnb/Blue-Warner/issues) här på GitHub.
+
+Det räcker med prefixet, alltså de tre första byten (till exempel `AA:BB:CC`). Skriv gärna vilken typ av fordon det gäller och hur säker du är.
+
 ## Skärmlägen och ljud
 
 Skärmen visar ett läge i taget, och det viktigaste vinner. Tabellen är sorterad efter prioritet, högst överst.

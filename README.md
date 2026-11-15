@@ -5,6 +5,8 @@ Varnare för bilen byggd på en Freenove ESP32-skärm (CYD, 3,5 tum) och en GPS-
 - **Fartkameravarnare** – närmar du dig en fartkamera och kör för fort varnar enheten med text och pip.
 - **Blåljusvarnare** – närmar du dig ett misstänkt blåljusfordon larmar enheten med röd skärm och ton.
 
+![BLUE-WARNER: Freenove CYD-skärmen med GPS-mottagare](images/image.jpg)
+
 Allt sker lokalt i enheten. Den sänder ingenting och behöver varken mobil eller internet under körning.
 
 > [!WARNING]

@@ -57,15 +57,7 @@ GPS-modulen kopplas till CYD-kortet med tre kablar.
 | VCC | 3,3 V | Matning |
 | RX | ansluts inte | Enheten skickar inget till GPS:en |
 
-```
-   GPS-modul                          Freenove CYD 3,5"
- ┌────────────┐                     ┌──────────────────┐
- │        VCC ├─────────────────────┤ 3,3 V            │
- │        GND ├─────────────────────┤ GND              │
- │         TX ├────────────────────►│ GPIO35 (data in) │
- │         RX │  ansluts inte       │                  │
- └────────────┘                     └──────────────────┘
-```
+![Kopplingsbild: GPS-modul till CYD-kortet med tre kablar](images/kopplingsbild.png)
 
 GPIO35 är en ren ingång på ESP32, vilket passar här eftersom enheten bara lyssnar på GPS:en. Placera GPS-antennen med fri sikt mot himlen, till exempel på instrumentbrädan.
 
@@ -73,29 +65,9 @@ GPIO35 är en ren ingång på ESP32, vilket passar här eftersom enheten bara ly
 
 Två signaler går in i enheten, GPS-data och Wi-Fi-trafik, och tre saker kommer ut: skärmbild, ljud och lysdiodens färg.
 
-```mermaid
-flowchart LR
-    GPS["GPS-modul<br/>position och fart, 1 gång/s"]
-    WIFI["Wi-Fi i luften<br/>MAC-adresser i närheten"]
+![Systembild: GPS och Wi-Fi går in, varningar kommer ut](images/systembild.png)
 
-    subgraph ESP["ESP32 i CYD-kortet"]
-        CAM["Fartkameravarnare<br/>position mot kameralistan,<br/>fart mot kamerans gräns"]
-        BLUE["Blåljusvarnare<br/>MAC-prefix (OUI) mot<br/>bevakningslistan"]
-        STORE[("Listor i flash / på SD-kort<br/>kameror, MAC-prefix, logg")]
-    end
-
-    SCREEN["Skärm<br/>läge, gräns, avstånd"]
-    SPK["Högtalare<br/>3 kHz pip, 2 kHz ton"]
-    LED["RGB-lysdiod<br/>färg efter läge"]
-
-    GPS --> CAM
-    WIFI --> BLUE
-    STORE -.-> CAM
-    STORE -.-> BLUE
-    ESP --> SCREEN
-    ESP --> SPK
-    ESP --> LED
-```
+![De två varningarna: fartkamera via GPS, blåljus via Wi-Fi](images/varningar.png)
 
 ### Fartkameravarnaren
 
@@ -133,13 +105,6 @@ Tappar enheten GPS-positionen i mer än 5 sekunder släcks kameravarningen tills
 4. Paket svagare än −85 dBm ignoreras, så att bara närliggande utrustning ger larm.
 5. Vid träff visas "ALARM – Blue light nearby" med MAC-adress och signalstyrka, och en pulserande ton på 2 kHz hörs. Larmet ligger kvar i 6 sekunder efter senaste träffen.
 
-```mermaid
-flowchart LR
-    V["Fordon med Wi-Fi<br/>sänder sin MAC-adress"] --> L["BLUE-WARNER lyssnar<br/>passivt, kanal 1–13"]
-    L --> Q{"Prefix i listan och<br/>minst −85 dBm?"}
-    Q -- ja --> AL["ALARM (röd)<br/>ton på 2 kHz"]
-    Q -- nej --> OK["ALL OK (grön)"]
-```
 
 Förinlagda prefix (**misstänkta, ej verifierade**):
 
@@ -163,6 +128,10 @@ Skärmen visar ett läge i taget, och det viktigaste vinner. Tabellen är sorter
 | ALARM | Röd | Bevakat MAC-prefix hörs i närheten | Pulserande ton, 2 kHz |
 | SPEED CAMERA | Gul | Kamera inom 500 m, farten är inom gränsen | – |
 | ALL OK | Grön | Skanning pågår, inget att varna för | – |
+
+![Skärmens sex lägen](images/skarmlagen.png)
+
+*Bilden är en illustration ritad efter koden, inte ett foto av enheten.*
 
 De två larmen har olika tonhöjd för att gå att skilja åt utan att titta på skärmen. Inträffar båda samtidigt visas SLOW DOWN, med raden "Blue light nearby" under.
 
@@ -291,6 +260,7 @@ Enheten är ett hobbybygge och ett hjälpmedel, inte en garanti.
 | `display.h`, `display.cpp` | Freenoves LVGL-wrapper för skärm och touch, med `TFT_DIRECTION` |
 | `speed_cameras_with_limits.h` | Kameralistan som kompileras in (2 482 kameror) |
 | `download_database.py` | Skapar en ny kameralista från OpenStreetMap |
+| `images/` | Bilderna som visas i den här README-filen |
 
 ## Data och erkännanden
 

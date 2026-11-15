@@ -67,8 +67,6 @@ Två signaler går in i enheten, GPS-data och Wi-Fi-trafik, och tre saker kommer
 
 ![Systembild: GPS och Wi-Fi går in, varningar kommer ut](images/systembild.png)
 
-![De två varningarna: fartkamera via GPS, blåljus via Wi-Fi](images/varningar.png)
-
 ### Fartkameravarnaren
 
 1. GPS-modulen skickar position och fart en gång per sekund (NMEA-meningen RMC). Antal satelliter läses ur GGA.
@@ -77,14 +75,6 @@ Två signaler går in i enheten, GPS-data och Wi-Fi-trafik, och tre saker kommer
 4. Är farten mer än 1 km/h över gränsen blir det "SLOW DOWN" med pip på 3 kHz.
 5. När kameran är mer än 500 m bort återgår skärmen, och händelsen loggas som passerad.
 
-```mermaid
-flowchart TD
-    A["Ny GPS-position"] --> B{"Kamera inom 500 m?"}
-    B -- nej --> OK["ALL OK (grön)"]
-    B -- ja --> C{"Fart mer än 1 km/h<br/>över gränsen?"}
-    C -- nej --> CAM["SPEED CAMERA (gul)<br/>visar gräns och avstånd, tyst"]
-    C -- ja --> SLOW["SLOW DOWN (orange)<br/>pip på 3 kHz"]
-```
 
 Pipen kommer tätare ju mer för fort du kör:
 

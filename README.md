@@ -12,7 +12,7 @@ Allt sker lokalt i enheten. Den sänder ingenting och behöver varken mobil elle
 > [!WARNING]
 > **Blåljuslistan är inte verifierad.** De förinlagda MAC-prefixen är sådana som jag *misstänker* används av Wi-Fi-utrustningen i polisens och räddningstjänstens fordon. Det är inte bekräftat. Larmet kan både utebli och lösa ut för helt andra fordon och enheter.
 >
-> **Hjälp gärna till:** identifierar ni riktiga MAC-adresser från verkliga fordon, rapportera dem till mig via [GitHub](https://github.com/sa7bnb/Blue-Warner/issues) eller mejl till [sa7bnb@gmail.com](mailto:sa7bnb@gmail.com), så uppdaterar jag programvaran.
+> **Hjälp gärna till:** identifierar ni riktiga MAC-adresser från verkliga fordon, rapportera dem till mig via [GitHub](https://github.com/sa7bnb/Blue-Warner/issues) eller mejl (samma användarnamn som här @gmail.com), så uppdaterar jag programvaran.
 
 Utvecklad av A. Isaksson, SA7BNB.
 
@@ -112,7 +112,7 @@ Listan rymmer högst 64 prefix och ändras via konfigurationssidan, skärmens OU
 
 ### Hjälp till att förbättra listan
 
-Om ni identifierar MAC-adresser från verkliga fordon, dela gärna med er av dem så att jag kan uppdatera programvaran med de adresserna. Öppna ett ärende under [Issues](https://github.com/sa7bnb/Blue-Warner/issues) här på GitHub, eller mejla [sa7bnb@gmail.com](mailto:sa7bnb@gmail.com).
+Om ni identifierar MAC-adresser från verkliga fordon, dela gärna med er av dem så att jag kan uppdatera programvaran med de adresserna. Öppna ett ärende under [Issues](https://github.com/sa7bnb/Blue-Warner/issues) här på GitHub, eller mejla (samma användarnamn som här @gmail.com).
 
 Det räcker med prefixet, alltså de tre första byten (till exempel `AA:BB:CC`). Skriv gärna vilken typ av fordon det gäller och hur säker du är.
 
